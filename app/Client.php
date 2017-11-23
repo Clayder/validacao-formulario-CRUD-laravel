@@ -9,6 +9,7 @@ class Client extends Model
 
     const MARITAL_STATUS = [
         1 => 'Solteiro',
-        2 => 'Casado'
+        2 => 'Casado',
+        3 => 'Divorciado'
     ];
 }
