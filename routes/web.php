@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin'
+    ], function(){
+    Route::resource('clients', 'ClientsController');
+});
