@@ -5,6 +5,8 @@
             <div class="col-md-12">
                 <h3>Listagem de clientes</h3>
                 <br/><br/>
+                <a class="btn btn-default" href="{{route('clients.create')}}">Cadastrar</a>
+                <br/><br/>
                 <table class="table table-striped">
                     <thead>
                     <tr>

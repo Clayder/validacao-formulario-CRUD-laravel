@@ -3,7 +3,14 @@
     <div class="row">
         <div class="col-md-12">
             <h3> Novo cliente </h3>
-            <form method="POST" action="/admin/clients">
+            @foreach($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                    {{$error}}
+                </div>
+            @endforeach
+            <form method="POST" action="{{route('clients.store')}}">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label for="name">Nome: </label>
@@ -17,7 +24,7 @@
 
                 <div class="form-group">
                     <label for="email">E-mail: </label>
-                    <input type="email" class="form-control" id="email" type="email">
+                    <input type="email" class="form-control" id="email" name="email">
                 </div>
 
                 <div class="form-group">
@@ -61,6 +68,7 @@
                         <input type="checkbox" class="form-control" name="defaulter" id="defaulter"> Inadimplente ?
                     </label>
                 </div>
+                <button type="submit" class="btn"> Enviar</button>
             </form>
         </div>
     </div>
