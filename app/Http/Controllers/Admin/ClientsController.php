@@ -37,21 +37,11 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        $mariatalStatus = implode(',', array_keys(Client::MARITAL_STATUS));
-        $this->validate($request,[
-            'name' => 'required|max:255',
-            'document_number' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'date_birth' => 'required|date',
-            'sex' => 'required|in:m,f',
-            'marital_status' => 'required|in: $maritalStaus',
-            'physical_disability' => 'max:255'
-            ]);
+        $this->validacao($request);
         $data = $request->all();
         $data['defaulter'] = $request->has('defaulter');
         Client::create($data);
-        return redirect()->to('/admin/clients');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -86,7 +76,24 @@ class ClientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::find($id);
+        //$this->validacao($request);
+        /*
+        $data = $request->all();
+        var_dump($data);
+        var_dump($mariatalStatus = implode(',', array_keys(Client::MARITAL_STATUS)));
+    */
+
+        $this->validacao($request);
+        $data = $request->all();
+        $data['defaulter'] = $request->has('defaulter');
+        /**
+         * Atualiza os dados do cliente respeitando o atributo $fillable do model
+        */
+        $client->fill($data);
+        $client->save();
+        return redirect()->route('clients.index');
+
     }
 
     /**
@@ -98,5 +105,19 @@ class ClientsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validacao(Request $request){
+        $mariatalStatus = implode(',', array_keys(Client::MARITAL_STATUS));
+        $this->validate($request,[
+            'name' => 'required|max:255',
+            'document_number' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'date_birth' => 'required|date',
+            'sex' => 'required|in:m,f',
+            'marital_status' => "required|in: $mariatalStatus",
+            'physical_disability' => 'max:255'
+        ]);
     }
 }

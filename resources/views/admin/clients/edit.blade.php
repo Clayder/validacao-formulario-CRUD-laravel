@@ -12,6 +12,7 @@
             @endforeach
             <form method="POST" action="{{route('clients.update', ['client' => $client->id])}}">
                 {{csrf_field()}}
+                {{method_field('PUT')}}
                 <div class="form-group">
                     <label for="name">Nome: </label>
                     <input type="text" class="form-control" id="name" name="name" value="{{$client->name}}">
@@ -33,12 +34,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="marital_status"></label>
+                    <label for="marital_status">Estado civil </label>
                     <select name="marital_status" id="marital_status" class="form-control" value="{{$client->marital_status}}">
                         <option value="">Selecione o estado civil</option>
-                        <option value="1">Solteiro</option>
-                        <option value="2">Casado</option>
-                        <option value="3">Divorciado</option>
+                        <option value="1" {{$client->marital_status == 1 ? 'selected="selected"' : ''}}>Solteiro</option>
+                        <option value="2" {{$client->marital_status == 2 ? 'selected="selected"' : ''}}>Casado</option>
+                        <option value="3" {{$client->marital_status == 3 ? 'selected="selected"' : ''}}>Divorciado</option>
                     </select>
                 </div>
 
@@ -52,7 +53,6 @@
                         <input type="radio" name="sex" value="m" {{$client->sex == 'm' ? 'checked = "checked"':''}}> Masculino
                     </label>
                 </div>
-
                 <div class="radio">
                     <label>
                         <input type="radio" name="sex" value="f" {{$client->sex == 'f' ? 'checked = "checked"':''}}> Feminino
@@ -62,10 +62,9 @@
                     <label for="physical_disability">Deficiência Física</label>
                     <input type="text" class="form-control" name="physical_disability" id="physical_disability" value="{{$client->physical_disability}}">
                 </div>
-
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" class="form-control" name="defaulter" id="defaulter" {{$client->defaulter ? 'checked = "checked"':''}}> Inadimplente ?
+                        <input type="checkbox" class="" name="defaulter" id="defaulter" {{$client->defaulter ? 'checked = "checked"':''}}> Inadimplente ?
                     </label>
                 </div>
                 <button type="submit" class="btn"> Enviar</button>
