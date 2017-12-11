@@ -26,7 +26,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        return view('admin.clients.create');
+        return view('admin.clients.create', ['client' => new Client()]);
     }
 
     /**
@@ -77,13 +77,6 @@ class ClientsController extends Controller
     public function update(Request $request, $id)
     {
         $client = Client::find($id);
-        //$this->validacao($request);
-        /*
-        $data = $request->all();
-        var_dump($data);
-        var_dump($mariatalStatus = implode(',', array_keys(Client::MARITAL_STATUS)));
-    */
-
         $this->validacao($request);
         $data = $request->all();
         $data['defaulter'] = $request->has('defaulter');
