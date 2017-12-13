@@ -42,7 +42,7 @@ class AlterToClientTypeClientsTable extends Migration
             $table->date('date_birth')->change();
             \DB::statement('ALTER TABLE clients CHANGE COLUMN sex sex CHAR NOT NULL');
             $maritalStatus = array_keys(\App\Client::MARITAL_STATUS);
-            $maritalStatusString = arreay_map(function ($value) {
+            $maritalStatusString = array_map(function ($value) {
                 return "'$value'";
             }, $maritalStatus);
             $maritalStatusEnum = implode(',', $maritalStatusString);
