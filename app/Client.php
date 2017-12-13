@@ -27,4 +27,12 @@ class Client extends Model
         'physical_disability'
     ];
 
+    /**
+     * @param $type
+     * @return string
+     */
+    public static function getClientType($type){
+        return $type == self::TYPE_LEGAL ? $type : self::TYPE_INDIVIDUAL;
+    }
+
 }
