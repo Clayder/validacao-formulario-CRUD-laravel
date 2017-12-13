@@ -30,7 +30,10 @@
                             <td>{{ $client->email }}</td>
                             <td>{{ $client->phone }}</td>
                             <td>{{ $client->sex }}</td>
-                            <td><a href="{{route('clients.edit', ['client' => $client->id])}}">Editar</a></td>
+                            <td>
+                                <a href="{{route('clients.edit', ['client' => $client->id])}}">Editar</a>
+                                <a href="{{route('clients.show', ['client' => $client->id])}}">Ver</a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
