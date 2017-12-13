@@ -14,7 +14,7 @@ class AddClientTypeFieldToClientsTable extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            //
+            $table->string("client_type")->default(\App\Client::TYPE_INDIVIDUAL);
         });
     }
 
@@ -26,7 +26,7 @@ class AddClientTypeFieldToClientsTable extends Migration
     public function down()
     {
         Schema::table('clients', function (Blueprint $table) {
-            //
+            $table->dropColumn("client_type");
         });
     }
 }
