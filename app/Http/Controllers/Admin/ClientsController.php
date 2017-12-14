@@ -33,13 +33,12 @@ class ClientsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validacao($request);
-        $data = $request->all();
+        $data = $this->validacao($request);
         $data['defaulter'] = $request->has('defaulter');
         Client::create($data);
         return redirect()->route('clients.index');
@@ -48,7 +47,7 @@ class ClientsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $client
+     * @param  int $client
      * @return \Illuminate\Http\Response
      */
     public function show(Client $client)
@@ -59,7 +58,7 @@ class ClientsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -71,29 +70,27 @@ class ClientsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $client = Client::find($id);
-        $this->validacao($request);
-        $data = $request->all();
+        $data = $this->validacao($request);
         $data['defaulter'] = $request->has('defaulter');
         /**
          * Atualiza os dados do cliente respeitando o atributo $fillable do model
-        */
+         */
         $client->fill($data);
         $client->save();
         return redirect()->route('clients.index');
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $client
+     * @param  int $client
      * @return \Illuminate\Http\Response
      */
     public function destroy(Client $client)
@@ -102,17 +99,29 @@ class ClientsController extends Controller
         return redirect()->route('clients.index');
     }
 
-    private function validacao(Request $request){
-        $mariatalStatus = implode(',', array_keys(Client::MARITAL_STATUS));
-        $this->validate($request,[
+    private function validacao(Request $request)
+    {
+        $clientType = Client::getClientType($request->client_type);
+        $rules = [
             'name' => 'required|max:255',
             'document_number' => 'required',
             'email' => 'required|email',
-            'phone' => 'required',
+            'phone' => 'required'
+        ];
+
+        $mariatalStatus = implode(',', array_keys(Client::MARITAL_STATUS));
+        $rulesIndividual = [
             'date_birth' => 'required|date',
             'sex' => 'required|in:m,f',
             'marital_status' => "required|in: $mariatalStatus",
             'physical_disability' => 'max:255'
-        ]);
+        ];
+        $rulesLegal = [
+            'company_name' => "required|max:255"
+        ];
+
+        return $this->validate($request,
+            $clientType == Client::TYPE_INDIVIDUAL ? $rules + $rulesIndividual : $rules + $rulesLegal);
+
     }
 }
