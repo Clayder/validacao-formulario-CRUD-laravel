@@ -111,7 +111,7 @@ class ClientsController extends Controller
         // Validação em comum
         $rules = [
             'name' => 'required|max:255',
-            'document_number' => 'required',
+            'document_number' => 'required|unique:clients,document_number',
             'email' => 'required|email',
             'phone' => 'required'
         ];
