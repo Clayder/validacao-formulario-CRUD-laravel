@@ -79,7 +79,7 @@ class ClientsController extends Controller
     public function update(Request $request, $id)
     {
         $client = Client::find($id);
-        $data = $this->validacao($request);
+        $data = $this->validacao($request, $id);
         $data['defaulter'] = $request->has('defaulter');
         /**
          * Atualiza os dados do cliente respeitando o atributo $fillable do model
@@ -105,13 +105,14 @@ class ClientsController extends Controller
      * @param Request $request
      * @return array
      */
-    private function validacao(Request $request)
+    private function validacao(Request $request, $clientId = null)
     {
         $clientType = Client::getClientType($request->client_type);
+
         // Validação em comum
         $rules = [
             'name' => 'required|max:255',
-            'document_number' => 'required|unique:clients,document_number',
+            'document_number' => "required|unique:clients,document_number,$clientId",
             'email' => 'required|email',
             'phone' => 'required'
         ];
