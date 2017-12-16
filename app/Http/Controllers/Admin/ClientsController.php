@@ -109,10 +109,12 @@ class ClientsController extends Controller
     {
         $clientType = Client::getClientType($request->client_type);
 
+        $documentNumberType = $clientType == Client::TYPE_INDIVIDUAL ? 'cpf' : 'cnpj';
+
         // Validação em comum
         $rules = [
             'name' => 'required|max:255',
-            'document_number' => "required|unique:clients,document_number,$clientId",
+            'document_number' => "required|unique:clients,document_number,$clientId|document_number:$documentNumberType",
             'email' => 'required|email',
             'phone' => 'required'
         ];
