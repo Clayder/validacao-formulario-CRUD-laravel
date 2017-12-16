@@ -40,6 +40,7 @@ class ClientsController extends Controller
     {
         $data = $this->validacao($request);
         $data['defaulter'] = $request->has('defaulter');
+        $data['client_type'] = Client::getClientType($request->client_type);;
         Client::create($data);
         return redirect()->route('clients.index');
     }
@@ -99,9 +100,14 @@ class ClientsController extends Controller
         return redirect()->route('clients.index');
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     private function validacao(Request $request)
     {
         $clientType = Client::getClientType($request->client_type);
+        // Validação em comum
         $rules = [
             'name' => 'required|max:255',
             'document_number' => 'required',
@@ -109,6 +115,7 @@ class ClientsController extends Controller
             'phone' => 'required'
         ];
 
+        // Validação do cliente físico
         $mariatalStatus = implode(',', array_keys(Client::MARITAL_STATUS));
         $rulesIndividual = [
             'date_birth' => 'required|date',
@@ -116,6 +123,8 @@ class ClientsController extends Controller
             'marital_status' => "required|in: $mariatalStatus",
             'physical_disability' => 'max:255'
         ];
+
+        // validação do cliente juridico
         $rulesLegal = [
             'company_name' => "required|max:255"
         ];

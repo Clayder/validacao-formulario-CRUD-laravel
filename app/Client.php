@@ -24,7 +24,8 @@ class Client extends Model
         'date_birth',
         'sex',
         'marital_status',
-        'physical_disability'
+        'physical_disability',
+        'client_type'
     ];
 
     /**
