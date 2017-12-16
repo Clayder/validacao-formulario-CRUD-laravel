@@ -5,8 +5,6 @@ namespace App\Providers;
 use App\Providers\ValidacaoForm\ClientValidation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Code\Validator\Cnpj;
-use Code\Validator\Cpf;
 
 class AppServiceProvider extends ServiceProvider
 {
