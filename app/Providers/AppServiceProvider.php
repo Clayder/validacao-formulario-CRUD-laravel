@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Providers\ValidacaoForm\ClientValidation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -15,6 +16,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        $platform = Schema::getConnection()->getDoctrineSchemaManager()->getDatabasePlatform();
+        // Quando um campo for enum, vai ser utilizado string
+        $platform->registerDoctrineTypeMapping('enum', 'string');
+
+        // Realiza a validação personalizada do cpf e cnpj
+        ClientValidation::documentNumber();
     }
 
     /**
