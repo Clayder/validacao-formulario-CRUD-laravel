@@ -54,7 +54,7 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
 
 ----------
 
-> **Configurar o arquivo  .env**
+> **Configure o arquivo  .env**
 
 ----------
 
