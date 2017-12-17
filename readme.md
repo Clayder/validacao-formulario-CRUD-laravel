@@ -25,7 +25,7 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
 
 **Clone o projeto**
 
-    git clone git@github.com:seuprojeto
+    git clone https://github.com/Clayder/validacao-formulario-CRUD-laravel
 
 
 ----------
