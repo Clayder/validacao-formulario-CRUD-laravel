@@ -66,11 +66,12 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
 
 ----------
 
-
 **Rodar as migrations com:**
 
     php artisan migrate --seed    
 
+----------
 
+**Crie um servidor**
 
- 
+    php artisan serve
