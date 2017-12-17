@@ -54,7 +54,15 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
 
 ----------
 
-> **Configure o arquivo  .env**
+>**Crie um banco de dados**
+
+----------
+
+**Configure o arquivo  .env**
+
+    DB_DATABASE=nome_banco
+    DB_USERNAME=nome_usuario
+    DB_PASSWORD=senha
 
 ----------
 
