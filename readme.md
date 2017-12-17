@@ -32,7 +32,7 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
 
 **Acesse o projeto**
 
-    cd seuprojeto
+    cd validacao-formulario-CRUD-laravel
 
 ----------
 
