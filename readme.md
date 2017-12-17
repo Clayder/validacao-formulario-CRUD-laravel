@@ -20,7 +20,7 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
  - Git flow 
  - Rotas
 
-**Clonando o projeto e instalando o Laravel**
+**Clonando o projeto e instalando o Laravel ( Terminal )**
 ------------------------------------------
 
 **Clone o projeto**
