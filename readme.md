@@ -1,7 +1,9 @@
 	
 
-**Validação de formulário e CRUD com Laravel 5.5**
+**Validação e crud de formulário com Laravel 5.5**
 ==============================================
+
+![enter image description here](https://raw.githubusercontent.com/Clayder/validacao-formulario-CRUD-laravel/master/git-imagens/img-list-client.PNG)
 
 Finalizei o curso de Laravel: Validações e Formulários, pela School of Net. 
 
@@ -20,7 +22,7 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
  - Git flow 
  - Rotas
 
-**Clonando o projeto e instalando o Laravel ( Terminal )**
+**Clonando o projeto e instalando o Laravel**
 ------------------------------------------
 
 **Clone o projeto**
@@ -66,12 +68,11 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
 
 ----------
 
+
 **Rodar as migrations com:**
 
     php artisan migrate --seed    
 
-----------
 
-**Crie um servidor**
 
-    php artisan serve
+ 
