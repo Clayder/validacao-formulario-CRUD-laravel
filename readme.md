@@ -12,7 +12,6 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
 **Tópicos aprendidos**
 ------------------
 
- - List item
  - Validação de formulários
  - CRUD ( Create, Read, Update e Delete ) com Laravel 5.5
  - Eloquent
@@ -21,7 +20,7 @@ Finalizei o curso de Laravel: Validações e Formulários, pela School of Net.
  - Git flow 
  - Rotas
 
-**Clonando um projeto e instalando o Laravel**
+**Clonando o projeto e instalando o Laravel**
 ------------------------------------------
 
 **Clone o projeto**
