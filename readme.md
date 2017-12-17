@@ -1,6 +1,6 @@
 	
 
-**Validação e crud de formulário com Laravel 5.5**
+**Validação de formulário e CRUD com Laravel 5.5**
 ==============================================
 
 Finalizei o curso de Laravel: Validações e Formulários, pela School of Net. 
